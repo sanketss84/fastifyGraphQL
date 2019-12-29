@@ -1,0 +1,105 @@
+// ------------------------
+//NOTE this is just an empty skeletion , for the full implementation details look at the finished scheme/index.js
+// ------------------------
+
+// We require the main GraphQL package and use JavaScript Destructuring to get the necessary 
+// GraphQL functions(GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID, GraphQLList and GraphQLNonNull).
+
+// We import our three controllers (carController, ownerController and serviceController).
+
+// We declare the carType, ownerType and serviceType GraphQL Object Types, 
+// which are functions that accept an object as a parameter, with a name and a fields key.
+
+// These functions are used to define our GraphQL schema, similar to the Mongoose models defined earlier.
+
+// The fields can return a particular type, and methods that take arguments. 
+// Learn More about Object Types. https://graphql.org/graphql-js/object-types/
+
+// Then we declare the RootQuery which is also a GraphQL Object Type and is found at the top level of every GraphQL server. 
+// It represents all of the possible entry points into the GraphQL API. Learn More about root fields and resolvers.
+
+// We then declare our Mutations, which are used to change data. Although any query could be implemented 
+// to change data, operations that cause changes should be sent explicitly via a mutation. 
+// Learn More about Mutations. https://graphql.org/learn/queries/#mutations
+
+// Lastly we export the GraphQLSchema.
+
+// Import External Dependancies
+const graphql = require('graphql')
+
+// Destructure GraphQL functions
+const {
+	GraphQLSchema,
+	GraphQLObjectType,
+	GraphQLString,
+	GraphQLInt,
+	GraphQLID,
+	GraphQLList,
+	GraphQLNonNull
+} = graphql
+
+// Import Controllers
+const carController = require('../controllers/carController')
+const ownerController = require('../controllers/ownerController')
+const serviceController = require('../controllers/serviceController')
+
+// Define Object Types
+const carType = new GraphQLObjectType({
+	name: 'Car',
+	fields: () => ({})
+})
+
+const ownerType = new GraphQLObjectType({
+	name: 'Owner',
+	fields: () => ({})
+})
+
+const serviceType = new GraphQLObjectType({
+	name: 'Service',
+	fields: () => ({})
+})
+
+// Define Root Query
+const RootQuery = new GraphQLObjectType({
+	name: 'RootQueryType',
+	fields: {
+		car: {},
+		cars: {},
+		owner: {},
+		service: {}
+	}
+})
+
+// Define Mutations
+const Mutations = new GraphQLObjectType({
+	name: 'Mutations',
+	fields: {
+		addCar: {
+			type: carType,
+			args: {},
+			async resolve(args) {
+				return ''
+			}
+		},
+		editCar: {
+			type: carType,
+			args: {},
+			async resolve(args) {
+				return ''
+			}
+		},
+		deleteCar: {
+			type: carType,
+			args: {},
+			async resolve(args) {
+				return ''
+			}
+		}
+	}
+})
+
+// Export the schema
+module.exports = new GraphQLSchema({
+	query: RootQuery,
+	mutation: Mutations
+})
