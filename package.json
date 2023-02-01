@@ -18,7 +18,7 @@
     "fastify-gql": "^2.0.4",
     "fastify-swagger": "^2.5.0",
     "graphql": "^14.5.8",
-    "mongoose": "^5.8.3",
+    "mongoose": "^5.13.15",
     "nodemon": "^2.0.2"
   },
   "devDependencies": {
